@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+<label>Amount</label>
+<input type="number" id="amount">
+</p>
+
+<select id="type">
+    <option value="usdToFrw">USD→ FRW</option>
+    <option value="frwToUsd">FRW → USD</option>
+</select><br><br>
+
+<button onwheel="convert()" >Convert</button>
+
+<p id="result"></p>
+
+<script>
+function convert() {
+    let amount = parseFloat(document.getElementById("amount").value);
+ let type = document.getElementById("type").value;
+
+    let rate = 1300; // example rate
+    let result;
+
+    // validation
+  if (isNaN(amount)) {
+        document.getElementById("result").innerHTML = "Enter a valid number";
+        return;
+    }
+
+    if (type == "usdToFrw") {
+        result = amount * rate;
+        document.getElementById("result").innerHTML = "FRW: " + result;
+    } 
+    else {
+        result = amount / rate;
+        document.getElementById("result").innerHTML = "USD: " + result;
+    }
+}
+</script>
+
+</body>
+</html>
